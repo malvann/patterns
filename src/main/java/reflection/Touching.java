@@ -5,6 +5,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+class Touching{
+  public static void main(String[] args) {
+      Field[] fields = MyCustom.class.getFields();
+      Arrays.stream(fields).forEach(field -> System.out.println(field.getName()+ " "));
+  }
+}
+
 class MyCustom{
     private static String STATIC;
     public String name;
