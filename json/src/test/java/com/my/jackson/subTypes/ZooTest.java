@@ -35,7 +35,7 @@ public class ZooTest {
 
     @Test
     public void whenDeserializingPolymorphicFroFile_thenCorrect() throws IOException {
-        File json = new File("src/test/resources/jackson/zoo/entity.json");
+        File json = new File("src/test/resources/jackson/subTypes/entity.json");
         Zoo zoo = new ObjectMapper().readValue(json, Zoo.class);
         log.info(zoo.toString());
         assertEquals("lacy", zoo.getAnimal().getName());

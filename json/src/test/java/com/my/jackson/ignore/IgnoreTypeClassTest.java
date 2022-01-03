@@ -1,7 +1,10 @@
-package com.my.jackson.ignoreType;
+package com.my.jackson.ignore;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.my.jackson.ignoreType.Customer;
+import com.my.jackson.ignoreType.Item;
+import com.my.jackson.ignoreType.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -27,5 +30,14 @@ public class IgnoreTypeClassTest {
         result = mapper.writeValueAsString(item);
         log.info("Json: {}", result);
         assertThat(result, not(containsString("owner")));
+    }
+
+    @Test
+    public void checkJsonIgnoreId() throws JsonProcessingException {
+        Item item = new Item("Lee", UUID.randomUUID().toString(), new User());
+        String result = new ObjectMapper().writeValueAsString(item);
+        log.info("Item: {}", item);
+        log.info("Json: {}", result);
+        assertThat(result, not(containsString("id")));
     }
 }
