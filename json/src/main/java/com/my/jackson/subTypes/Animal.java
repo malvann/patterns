@@ -1,4 +1,4 @@
-package com.my.jackson.zoo;
+package com.my.jackson.subTypes;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonSubTypes;

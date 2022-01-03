@@ -16,13 +16,13 @@ import static org.junit.Assert.assertThat;
 public class BeanWithFilterTest {
     @Test
     public void whenSerializingUsingJsonFilter_thenCorrect() throws JsonProcessingException {
-        BeanWithFilter bean = new BeanWithFilter(1, "My bean");
+        BeanWithFilter bean = new BeanWithFilter(1, "John", "Doe", 20);
         log.info("Bean: {}", bean);
         FilterProvider filters = new SimpleFilterProvider()
-                .addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name"));
+                .addFilter("myFilter", SimpleBeanPropertyFilter.filterOutAllExcept("name", "lastName"));
         String result = new ObjectMapper().writer(filters).writeValueAsString(bean);
         log.info("result: {}",result);
-        assertThat(result, containsString("My bean"));
+        assertThat(result, containsString("John"));
         assertThat(result, not(containsString("id")));
     }
 }

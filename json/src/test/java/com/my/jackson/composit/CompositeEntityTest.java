@@ -3,7 +3,6 @@ package com.my.jackson.composit;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.my.jackson.composit.CompositeEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 

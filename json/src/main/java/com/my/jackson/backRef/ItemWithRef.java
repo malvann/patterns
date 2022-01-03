@@ -1,4 +1,4 @@
-package com.my.jackson.ref;
+package com.my.jackson.backRef;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;

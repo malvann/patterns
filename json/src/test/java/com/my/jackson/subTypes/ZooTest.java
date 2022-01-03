@@ -1,4 +1,4 @@
-package com.my.jackson.zoo;
+package com.my.jackson.subTypes;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
