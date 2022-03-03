@@ -12,6 +12,7 @@
         <module>patterns</module>
         <module>stringsAndFiles</module>
         <module>json</module>
+        <module>guava</module>
     </modules>
 
     <properties>
