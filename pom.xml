@@ -13,6 +13,7 @@
         <module>stringsAndFiles</module>
         <module>json</module>
         <module>guava</module>
+        <module>eclipseCollections</module>
     </modules>
 
     <properties>
