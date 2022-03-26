@@ -5,12 +5,13 @@ import com.google.common.base.Functions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
-import com.google.common.collect.FluentIterable;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.core.IsEqual.equalTo;
@@ -89,17 +90,15 @@ public class WorkWithCollectionsTest {
 
     @Test
     public void whenTransformWithIterables_thenTransformed() {
-        Function<String, Integer> function = new Function<String, Integer>() {
-            @Override
-            public Integer apply(String input) {
-                return input.length();
-            }
+        Function<String, Integer> function = input -> {
+            assert input != null;
+            return input.length();
         };
 
         List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
-        Iterable<Integer> result = Iterables.transform(names, function);
+        List<Integer> result = names.stream().map(function).toList();
 
-        assertThat(result, contains(4, 4, 4, 3));
+        assertEquals(result, List.of(4, 4, 4, 3));
     }
 
     @Test
@@ -110,32 +109,25 @@ public class WorkWithCollectionsTest {
                         Functions.forPredicate(Predicates.containsPattern("m")));
 
         assertEquals(4, result.size());
-        assertThat(result, contains(false, false, true, true));
+        assertEquals(result, List.of(false, false, true, true));
     }
 
     @Test
     public void whenFilteringAndTransformingCollection_thenCorrect() {
-        Predicate<String> predicate = new Predicate<String>() {
-            @Override
-            public boolean apply(String input) {
-                return input.startsWith("A") || input.startsWith("T");
-            }
+        Predicate<String> predicate = input -> {
+            assert input != null;
+            return input.startsWith("A") || input.startsWith("T");
         };
 
-        Function<String, Integer> func = new Function<String,Integer>(){
-            @Override
-            public Integer apply(String input) {
-                return input.length();
-            }
+        Function<String, Integer> func = input -> {
+            return input.length();
         };
 
         List<String> names = Lists.newArrayList("John", "Jane", "Adam", "Tom");
-        Collection<Integer> result = FluentIterable.from(names)
-                .filter(predicate)
-                .transform(func)
+        Collection<Integer> result = names.stream().filter(predicate).map(func)
                 .toList();
 
         assertEquals(2, result.size());
-        assertThat(result, containsInAnyOrder(4, 3));
+        assertEquals(result, List.of(4, 3));
     }
 }
