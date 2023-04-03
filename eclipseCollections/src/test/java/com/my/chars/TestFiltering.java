@@ -8,14 +8,14 @@ import org.eclipse.collections.api.tuple.primitive.CharIntPair;
 import org.eclipse.collections.impl.factory.Strings;
 import org.eclipse.collections.impl.map.mutable.primitive.CharIntHashMap;
 import org.eclipse.collections.impl.set.mutable.primitive.CharHashSet;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class TestFiltering {
