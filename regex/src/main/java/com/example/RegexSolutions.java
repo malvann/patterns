@@ -4,6 +4,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexSolutions {
+
+//    Number not preceded by dogs: 100
+//    Number not preceded by dogs: 00
     public static void matchingANumberOnlyIfNotPrecededByASpecificWord() {
         String text = "cats 100, dogs 200";
         Pattern pattern = Pattern.compile("(?<!dogs )\\d+");
@@ -14,6 +17,7 @@ public class RegexSolutions {
         }
     }
 
+//    Number preceded by cats: 100
     public static void matchingANumberOnlyIfPrecededByASpecificWord() {
         String text = "cats 100, dogs 200";
         Pattern pattern = Pattern.compile("(?<=cats )\\d+");
@@ -24,6 +28,8 @@ public class RegexSolutions {
         }
     }
 
+//    Number not followed by cats: 10
+//    Number not followed by cats: 200
     public static void matchingANumberOnlyIfNotFollowedByASpecificWord() {
         String text = "100 cats, 200 dogs";
         Pattern pattern = Pattern.compile("\\d+(?! cats)");
@@ -34,6 +40,7 @@ public class RegexSolutions {
         }
     }
 
+//    Number followed by cats: 100
     public static void matchingANumberOnlyIfFollowedByASpecificWord() {
         String text = "100 cats, 200 dogs";
         Pattern pattern = Pattern.compile("\\d+(?= cats)");
@@ -44,6 +51,9 @@ public class RegexSolutions {
         }
     }
 
+//     -> content
+//    Greedy Match: <tag>content</tag>
+//    Non-Greedy Match: <tag>
     public static void quantifiersAndGreedyBehavior() {
         String text = "<tag>content</tag>";
         // Greedy
@@ -64,6 +74,7 @@ public class RegexSolutions {
         }
     }
 
+//    Number found: 10
     public static void negativeLookbehind() {
         String text = "cats 5, dogs 10";
         Pattern pattern = Pattern.compile("(?<!cats )\\b\\d+");
@@ -74,6 +85,7 @@ public class RegexSolutions {
         }
     }
 
+//    Number of cats: 5
     public static void positiveLookahead() {
         String text = "5 cats, 10 dogs";
         Pattern pattern = Pattern.compile("\\d+(?= cats)");
@@ -84,6 +96,7 @@ public class RegexSolutions {
         }
     }
 
+//    Duplicate word found: word
     public static void findingDuplicates() {
         String text = "word word";
         Pattern pattern = Pattern.compile("(\\b\\w+\\b) \\1");
@@ -94,6 +107,8 @@ public class RegexSolutions {
         }
     }
 
+//    Response: yes
+//    Response: no
     public static void groupingWithoutCapturing() {
         String text = "He said yes. She said no.";
         Pattern pattern = Pattern.compile("(?:He|She) said (yes|no)");
@@ -104,6 +119,10 @@ public class RegexSolutions {
         }
     }
 
+//    Name: John
+//    Number: 123456
+//    Name: Jane
+//    Number: 987654
     public static void capturingGroups() {
         String text = "John: 123456, Jane: 987654";
         Pattern pattern = Pattern.compile("(\\w+): (\\d+)");
@@ -115,6 +134,9 @@ public class RegexSolutions {
         }
     }
 
+//    Date found: 2020-04-28
+//    Date found: 2021-05-30
+//    Date found: 2023-04-12
     public static void findingMultipleOccurrences() {
         String dates = "2020-04-28, 2021-05-30, 2023-04-12";
         Pattern pattern = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
